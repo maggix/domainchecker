@@ -20,12 +20,12 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-    database: domainchecker_development
-    username: domainchecker
-    password:
+  database: domainchecker_development
+  username: domainchecker
+  password:
 
 production:
   <<: *default
-    database: domainchecker_production
-    username: domainchecker
-    password:
+  database: domainchecker_production
+  username: domainchecker
+  password:

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  host: MyString
+  user_id: MyString
+  expiration_date: 2014-12-10
+
+two:
+  host: MyString
+  user_id: MyString
+  expiration_date: 2014-12-10
