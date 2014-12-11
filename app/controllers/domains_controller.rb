@@ -24,9 +24,12 @@ class DomainsController < ApplicationController
   def create
     @domain = Domain.new(domain_params)
     @domain.user = current_user
-    @domain.save
-    # respond_with(@domain)
-    redirect_to action: "index"
+    if @domain.save
+      redirect_to action: "index"
+    else
+      respond_with(@domain)
+    end
+
   end
 
   def update
