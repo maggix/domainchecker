@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h1>Notification</h1>
+<p>
+  Dear <%= @user.email %>, <br>
+  the SSL certificate for website <%= @url %> will expire in <%= @domain.expiration_date - DateTime.now %> days.
+</p>
+<p>
+  Take your precautions.
+</p>
+<p>Thanks for using this service and have a great day!</p>
+</body>
+</html>
