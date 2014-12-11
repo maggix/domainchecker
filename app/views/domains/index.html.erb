@@ -2,29 +2,39 @@
 
 <table class="table table-striped">
   <thead>
-    <tr>
-      <th></th>
-      <th>Host</th>
-      <th>User</th>
-      <th>Expiration date</th>
-      <th>Last checked</th>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th></th>
+    <th>Host</th>
+    <th>User</th>
+    <th>Expiration date</th>
+    <th>Last checked</th>
+    <th colspan="2"></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @domains.each do |domain| %>
-      <tr>
-        <td><i class="fa fa-thumbs-up"></i></td>
-        <td><%= domain.host %></td>
-        <td><%= domain.user.email unless domain.user.nil? %></td>
-        <td><%= domain.expiration_date %></td>
-        <td></td>
-        <td><%= link_to 'Show', domain %></td>
-        <td><%= link_to 'Edit', edit_domain_path(domain) %></td>
-        <td><%= link_to 'Destroy', domain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <% @domains.each do |domain| %>
+    <tr>
+      <td>
+
+        <% if domain.expiration_date.nil? %>
+          <i class="fa fa-question-circle"></i>
+        <% else %>
+          <% if domain.expiration_date - Date.today > 14 %>
+            <i class="fa fa-thumbs-up"></i>
+          <% else %>
+            <i class="fa fa-exclamation-triangle"></i>
+          <% end %>
+        <% end %>
+      </td>
+      <td><%= domain.host %></td>
+      <td><%= domain.user.email unless domain.user.nil? %></td>
+      <td><%= domain.expiration_date.nil? ? "Not checked yet" : domain.expiration_date %></td>
+      <td><%= domain.last_checked %></td>
+      <td><%= link_to 'Edit', edit_domain_path(domain) %></td>
+      <td><%= link_to 'Destroy', domain, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+    </tr>
+  <% end %>
   </tbody>
 </table>
 

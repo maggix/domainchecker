@@ -18,6 +18,7 @@ namespace :check_domains do
       end
       if !@cert.nil?
         domain.expiration_date = @cert.not_after
+        domain.last_checked = Date.today
         domain.save
 
         if @cert.not_after.to_date < Date.today then

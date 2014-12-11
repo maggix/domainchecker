@@ -25,7 +25,8 @@ class DomainsController < ApplicationController
     @domain = Domain.new(domain_params)
     @domain.user = current_user
     @domain.save
-    respond_with(@domain)
+    # respond_with(@domain)
+    redirect_to action: "index"
   end
 
   def update
